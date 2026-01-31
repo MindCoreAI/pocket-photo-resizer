@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pocket Photo Resizer</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#0b0d10" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="header">
+        <h1>Pocket Photo Resizer</h1>
+        <p class="sub">Select or take a photo, choose a target size, download the resized version.</p>
+      </header>
+
+      <section class="card">
+        <label class="file">
+          <input id="fileInput" type="file" accept="image/*" />
+          <span class="btn">Select or take photo</span>
+          <span id="fileName" class="fileName">No file selected</span>
+        </label>
+
+        <div id="stage" class="stage hidden">
+          <div class="preview">
+            <img id="previewImg" alt="Preview" />
+          </div>
+
+          <div class="meta">
+            <div class="kv"><span class="k">Original</span><span id="origMeta" class="v">—</span></div>
+            <div class="kv"><span class="k">Output</span><span id="outMeta" class="v">—</span></div>
+          </div>
+
+          <div id="outputBox" class="outputBox hidden">
+            <div class="outputHeader">
+              <div class="label">Resized preview</div>
+              <div class="hint">iPhone: long‑press the image → Save to Photos</div>
+            </div>
+            <img id="outputImg" alt="Resized output" />
+          </div>
+
+          <div class="controls">
+            <div class="group">
+              <div class="label">Target long edge</div>
+              <div id="sizeButtons" class="buttons"></div>
+              <div class="hint">This sets the maximum width/height (keeps aspect ratio).</div>
+            </div>
+
+            <div class="group">
+              <div class="label">Format</div>
+              <div class="row">
+                <select id="formatSelect">
+                  <option value="image/jpeg" selected>JPEG (smaller)</option>
+                  <option value="image/webp">WebP (smaller, modern)</option>
+                  <option value="image/png">PNG (lossless, often larger)</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="qualityGroup" class="group">
+              <div class="label">Quality</div>
+              <div class="row">
+                <input id="qualityRange" type="range" min="0.4" max="0.95" step="0.05" value="0.8" />
+                <span id="qualityValue" class="pill">0.80</span>
+              </div>
+              <div class="hint">Lower quality = smaller file.</div>
+            </div>
+
+            <div class="group">
+              <button id="downloadBtn" class="btn primary" disabled>Download resized</button>
+              <button id="resetBtn" class="btn ghost" disabled>Reset</button>
+            </div>
+
+            <p class="fineprint">
+              Runs entirely in your browser (no upload to a server).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <small>pictureDownSize — local tool</small>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
