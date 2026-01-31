@@ -16,7 +16,7 @@ const qualityValue = document.getElementById('qualityValue');
 const downloadBtn = document.getElementById('downloadBtn');
 const resetBtn = document.getElementById('resetBtn');
 
-const TARGET_LONG_EDGES = [2048, 1600, 1280, 1024, 800, 640];
+const TARGET_LONG_EDGES = [4096, 3072, 2048, 1600, 1280, 1024, 800, 640];
 
 let originalFile = null;
 let originalBitmap = null;
